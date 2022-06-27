@@ -32,6 +32,8 @@ public class MyPanel extends JPanel implements KeyListener,Runnable {
             EnemyTank enemyTank = new EnemyTank(100*(i+1), 0);
 //            set direction
             enemyTank.setDirect(2);
+//            start enemy tank thread
+            new Thread(enemyTank).start();
 
             Shot shot = new Shot(enemyTank.getX() + 20,enemyTank.getY() + 60,enemyTank.getDirect());
 //            add the shot object to the shots vector
@@ -223,16 +225,29 @@ public class MyPanel extends JPanel implements KeyListener,Runnable {
 //            change direction
             hero.setDirect(0);
 //            change coordinate
-            hero.moveUp();
+
+            if(hero.getY() > 0){
+                hero.moveUp();
+            }
         }else if(e.getKeyCode() == KeyEvent.VK_D){ //right
             hero.setDirect(1);
-            hero.moveRight();
+
+            if(hero.getX() + 60 < 1000){
+                hero.moveRight();
+            }
         }else if(e.getKeyCode() == KeyEvent.VK_S){ //down
             hero.setDirect(2);
-            hero.moveDown();
+
+            if(hero.getY() + 60 < 750){
+                hero.moveDown();
+            }
         }else if(e.getKeyCode() == KeyEvent.VK_A){ //left
             hero.setDirect(3);
-            hero.moveLeft();
+
+
+            if(hero.getX() > 0){
+                hero.moveLeft();
+            }
         }
 
         //user press J, shot

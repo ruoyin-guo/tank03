@@ -7,7 +7,7 @@ public class Tank {
     private int x;
     private int y;
     private int direct; // 0 up,1 right,2 down,3 left
-    private int speed = 1;
+    private int speed = 2;
     public boolean isLive = true;
 
 
